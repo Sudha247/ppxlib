@@ -1094,6 +1094,7 @@ and signature_item ctxt f x : unit =
       type_extension ctxt f te
   | Psig_exception ed ->
       exception_declaration ctxt f ed
+  | Psig_effect ec -> failwith "unimplemented"
   | Psig_class l ->
       let class_description kwd f ({pci_params=ls;pci_name={txt;_};_} as x) =
         pp f "@[<2>%s %a%a%s@;:@;%a@]%a" kwd
@@ -1319,6 +1320,7 @@ and structure_item ctxt f x =
       pp f "@[<2>%a@]" (bindings ctxt) (rf,l)
   | Pstr_typext te -> type_extension ctxt f te
   | Pstr_exception ed -> exception_declaration ctxt f ed
+  | Pstr_effect ec -> failwith "unimplemented"
   | Pstr_module x ->
       let rec module_helper = function
         | {pmod_desc=Pmod_functor(arg_opt,me'); pmod_attributes = []} ->
